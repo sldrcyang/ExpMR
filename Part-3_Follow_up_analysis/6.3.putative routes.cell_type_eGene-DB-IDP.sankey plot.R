@@ -138,10 +138,10 @@ df$node <- factor(df$node, levels = c(dt$Disorder %>% unique() %>% rev(),
                                       dt$gene_name %>% unique() %>% rev(),
                                       dt$cell %>% unique() %>% rev()))
 
-Nnode = apply(dt[,-ncol(dt)], 2, unique) %>% unlist %>% length  #所需要的颜色数量=节点个数
+Nnode = apply(dt[,-ncol(dt)], 2, unique) %>% unlist %>% length
 mycol <- c4a('rainbow_wh_rd', Nnode)
 set.seed(2024)
-mycol1 <- sample(mycol,length(mycol), replace = F) #随机打乱配色顺序(后面细胞类型的颜色统一一下)
+mycol1 <- sample(mycol,length(mycol), replace = F)
 
 names = c(df$node[df$node %in% dt$cell] %>% unique() %>% as.vector(),
           df$node[df$node %in% dt$gene_name] %>% unique() %>% as.vector(),
@@ -176,10 +176,10 @@ ggplot(df, aes(x = x,
                next_node = next_node,
                fill = node,
                label = node)) +
-  scale_fill_manual(values = mycol1) + #更改配色
-  geom_sankey(flow.alpha = 0.5, #条带不透明度
-              smooth = 8, #条带弯曲度
-              width = 0.12) + #节点宽度
+  scale_fill_manual(values = mycol1) + 
+  geom_sankey(flow.alpha = 0.5, 
+              smooth = 8, 
+              width = 0.12) +
   geom_sankey_text(size = 5, color = "black") +
   theme_void() +
   theme(legend.position = 'none')
@@ -246,5 +246,6 @@ ggplot(df, aes(x = x,
                    color = "black") +
   theme_void() +
   theme(legend.position = 'none')
+
 
 
