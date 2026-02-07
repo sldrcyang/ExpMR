@@ -121,7 +121,6 @@ path2$cell = gsub('Inhibitory.neurons', 'Inhibitory neurons', path2$cell)
 
 path1$id = paste(path1$cell, path1$gene_name, path1$IDP, path1$Disorder, sep=' -> ')
 path2$id = paste(path2$cell, path2$gene_name, path2$IDP, path2$Disorder, sep=' -> ')
-bidirect = intersect(path1$id, path2$id)
 
 
 
@@ -247,4 +246,5 @@ ggplot(df, aes(x = x,
                    color = "black") +
   theme_void() +
   theme(legend.position = 'none')
+
 
